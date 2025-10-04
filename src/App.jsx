@@ -1,5 +1,12 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
 export const App = () => {
   return (
-    <h1>Movies</h1>
+    <main>
+      <BrowserRouter>
+          <Routes>
+          </Routes>
+      </BrowserRouter>
+    </main>
   )
 }
