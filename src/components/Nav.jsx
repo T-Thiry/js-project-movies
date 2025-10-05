@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Navbar = styled.nav`
@@ -10,6 +10,26 @@ const Navbar = styled.nav`
   color: white;
   `
 
+const LeftSection = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  `
+
+const BackLink = styled(Link)`
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(127, 127, 127);
+    text-decoration: underline;
+  }
+  `
+
 const Logo = styled.div`
   font-size: 2rem;
   font-weight: bold;
@@ -17,9 +37,15 @@ const Logo = styled.div`
   `
 
 export const Nav = () => {
+  const location = useLocation()
+  const isMovieDetails = location.pathname.startsWith('/movie/')
+
   return (
     <Navbar>
-      <Logo>M</Logo> 
+      <LeftSection>
+        <Logo>M</Logo> 
+        {isMovieDetails && <BackLink to="/">&larr; Back to Movies</BackLink>}
+      </LeftSection>
     </Navbar>
   )
 }
